@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jeopardy Board Template</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'game/styles/styles-detail.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="entire-screen">
+			<nav>
+				<select id="menu">
+					<option selected value="first">Jeopardy Round</option>
+					<option value="double">Double Jeopardy Round</option>
+					<option value="final">Final Jeopardy Round</option>
+					<option value="home">Back to Episode Select</option>
+				</select>
+			</nav>
+			<div class="grid-container">
+        <div class="col1 category">
+			<p>{{ episode.0.category }}</p>
+        </div>
+        <div class="col2 category">
+			<p>{{ episode.5.category }}</p>
+        </div>
+        <div class="col3 category">
+			<p>{{ episode.10.category }}</p>
+        </div>
+        <div class="col4 category">
+			<p>{{ episode.15.category }}</p>
+        </div>
+        <div class="col5 category">
+			<p>{{ episode.20.category }}</p>
+        </div>
+        <div class="col6 category">
+			<p>{{ episode.25.category }}</p>
+        </div>
+        <div class="col1 clue row1" id="1">
+          <p>$200</p>
+        </div>
+        <div class="col2 clue row1" id="6">
+          <p>$200</p>
+        </div>
+        <div class="col3 clue row1" id="11">
+          <p>$200</p>
+        </div>
+        <div class="col4 clue row1" id="16">
+          <p>$200</p>
+        </div>
+        <div class="col5 clue row1" id="21">
+          <p>$200</p>
+        </div>
+        <div class="col6 clue row1" id="26">
+          <p>$200</p>
+        </div>
+        <div class="col1 clue row2" id="2">
+          <p>$400</p>
+        </div>
+        <div class="col2 clue row2" id="7">
+          <p>$400</p>
+        </div>
+        <div class="col3 clue row2" id="12">
+          <p>$400</p>
+        </div>
+        <div class="col4 clue row2" id="17">
+          <p>$400</p>
+        </div>
+        <div class="col5 clue row2" id="22">
+          <p>$400</p>
+        </div>
+        <div class="col6 clue row2" id="27">
+          <p>$400</p>
+        </div>
+        <div class="col1 clue row3" id="3">
+          <p>$600</p>
+        </div>
+        <div class="col2 clue row3" id="8">
+          <p>$600</p>
+        </div>
+        <div class="col3 clue row3" id="13">
+          <p>$600</p>
+        </div>
+        <div class="col4 clue row3" id="18">
+          <p>$600</p>
+        </div>
+        <div class="col5 clue row3" id="23">
+          <p>$600</p>
+        </div>
+        <div class="col6 clue row3" id="28">
+          <p>$600</p>
+        </div>
+        <div class="col1 clue row4" id="4">
+          <p>$800</p>
+        </div>
+        <div class="col2 clue row4" id="9">
+          <p>$800</p>
+        </div>
+        <div class="col3 clue row4" id="14">
+          <p>$800</p>
+        </div>
+        <div class="col4 clue row4" id="19">
+          <p>$800</p>
+        </div>
+        <div class="col5 clue row4" id="24">
+          <p>$800</p>
+        </div>
+        <div class="col6 clue row4" id="29">
+          <p>$800</p>
+        </div>
+        <div class="col1 clue row5" id="5">
+          <p>$1000</p>
+        </div>
+        <div class="col2 clue row5" id="10">
+          <p>$1000</p>
+        </div>
+        <div class="col3 clue row5" id="15">
+          <p>$1000</p>
+        </div>
+        <div class="col4 clue row5" id="20">
+          <p>$1000</p>
+        </div>
+        <div class="col5 clue row5" id="25">
+          <p>$1000</p>
+        </div>
+        <div class="col6 clue row5" id="30">
+          <p>$1000</p>
+        </div>
+      </div>
+    </div>
+    <script type="application/json" src="db/data.json"></script>
+		<script src="{% static 'game/scripts/script-detail.js' %}"></script>
+	<script>
+runFirst({{episode_json|safe}});
+	</script>
+  </body>
+</html>

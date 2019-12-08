@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JParty Episode Select</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'game/styles/styles-index.css' %}">
+	</head>
+	<body>
+		<div class="title">
+			<h1>JParty</h1>
+		</div>
+		<div class="select-form">
+			<h3>Select a season and episode, then click OK to begin the game!</h3>
+			<form id="form" action="">
+				<select id="seasonList" onchange="populateEpisodesList()">
+				</select>
+				<select id="episodeList" onchange="setOKButton()">  
+				</select>
+				<button id="submitButton" disabled>OK!</button>
+			</form>
+		</div>
+	</body>
+	<footer>
+		<p>This is a fan site; it is in no way affiliated with or connected to Jeopardy! or Jeopardy Productions, Inc. The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. and are protected under law. Visit the official Jeopardy site at <a href="https://www.jeopardy.com/">jeopardy.com</a>.</p>
+		<p>Content for clues, answers, and season and episode information is available at <a href="http://www.j-archive.com/">j-archive.com</a>. Suggest any corrections for clues or answers to their site.</p>
+	</footer>
+	<script src="{% static 'game/scripts/script-index.js' %}"></script>
+</html>

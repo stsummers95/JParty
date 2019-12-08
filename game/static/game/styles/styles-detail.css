@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 98%;
+    width: 99%;
+    justify-content: center;
+    background-color: black;
+    margin: auto;
+}
+
+.entire-screen {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+	height: 7%;
+	padding: 7px 0 0 0;
+}
+
+select {
+	float: right;
+	background-color: rgb(214, 157, 34);
+	color: white;
+	height: 100%;
+	width: 25%;
+	font-size: 20px;
+	border: none;
+	margin: 0 1.2vw 0 0;
+}
+
+.grid-container {
+    display: grid;
+    height: 93%;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-rows: 16% 16% 16% 16% 16% 16%;
+    grid-gap: 10px;
+    background-color: black;
+    padding: 8px 0 8px 8px;
+    align-items: center;
+}
+
+.grid-container div {
+    background-color: rgb(43, 31, 150);
+    color: rgb(214, 157, 34);
+    text-align: center;
+    font-family: Anton;
+    display: table;
+    height: 100%;
+    padding: 0 7px;
+}
+
+.grid-container .category {
+    color: white;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.clue p {
+    font-size: 5.6vw;
+    text-shadow: 5px 5px black;
+}
+
+.category p {
+    font-size: 2.6vw;
+    text-shadow: none;
+}
+
+.clue:hover {
+    background-color: rgb(86, 76, 177);
+    /*transition: all 4s;*/
+}
+
+.answer-text {
+    color: white;
+    background-color: rgb(43, 31, 150);
+    font: Garamond serif;
+    font-size: 80%;
+    padding: 1em;
+    text-align: center;
+    vertical-align: middle;
+    transition: all 0.8s linear;
+    transition-delay: 0.4s;
+    word-spacing: 0.12em;
+}
+
+.zoom {
+    transform: scale(7) translate(60px, 30px);
+}
+
+.response-text {
+	color: white;
+	background-color: rgb(43, 31, 150);
+	font: Garamond serif;
+	font-size: 80%;
+	padding: 1em;
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+@media all and (min-width: 1200px) {
+    .clue p {
+        font-size: 67.2px;
+    }
+    
+    .category p {
+        font-size: 31px;
+    }
+}
+
+@media all and (max-width: 1030px) {
+    html, body {
+        width: 96%;
+    }
+}
+
+/*@media all and (max-height: 710px) {
+    html, body {
+        height: 96%;
+    }
+}*/
+
+@media all and (max-height: 500px) {
+    .grid-container {
+        height: 500px;
+    }
+}
