@@ -11,7 +11,7 @@
   <body>
     <div class="entire-screen">
 			<nav>
-				<select id="menu">
+				<select id="menu" onchange="">
 					<option selected value="first">Jeopardy Round</option>
 					<option value="double">Double Jeopardy Round</option>
 					<option value="final">Final Jeopardy Round</option>
@@ -20,25 +20,25 @@
 			</nav>
 			<div class="grid-container">
         <div class="col1 category">
-			<p>{{ episode.0.category }}</p>
+			<p></p>
         </div>
-        <div class="col2 category">
-			<p>{{ episode.5.category }}</p>
+		<div class="col2 category">
+			<p></p>
         </div>
         <div class="col3 category">
-			<p>{{ episode.10.category }}</p>
+			<p></p>
         </div>
         <div class="col4 category">
-			<p>{{ episode.15.category }}</p>
+			<p></p>
         </div>
         <div class="col5 category">
-			<p>{{ episode.20.category }}</p>
+			<p></p>
         </div>
         <div class="col6 category">
-			<p>{{ episode.25.category }}</p>
+			<p></p>
         </div>
         <div class="col1 clue row1" id="1">
-          <p>$200</p>
+          <p></p>
         </div>
         <div class="col2 clue row1" id="6">
           <p>$200</p>
@@ -130,9 +130,9 @@
       </div>
     </div>
     <script type="application/json" src="db/data.json"></script>
-		<script src="{% static 'game/scripts/script-detail.js' %}"></script>
+	<script src="{% static 'game/scripts/script-detail.js' %}"></script>
 	<script>
-runFirst({{episode_json|safe}});
+		runFirst({{episode_json|safe}});
 	</script>
   </body>
 </html>

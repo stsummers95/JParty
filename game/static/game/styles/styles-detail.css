@@ -78,7 +78,14 @@ p {
 
 .clue:hover {
     background-color: rgb(86, 76, 177);
-    /*transition: all 4s;*/
+}
+
+.no-clue {
+	background-color: rgb(20, 20, 50) !important;
+}
+
+.no-clue:hover {
+	background-color: rgb(20, 20, 50) !important;
 }
 
 .answer-text {
