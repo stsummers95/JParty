@@ -76,6 +76,11 @@ p {
     text-shadow: none;
 }
 
+.clue-final p {
+	font-size: 2.4vw !important;
+	text-shadow: 3px 3px black;
+}
+
 .clue:hover {
     background-color: rgb(86, 76, 177);
 }

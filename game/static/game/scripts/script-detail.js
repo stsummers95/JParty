@@ -16,6 +16,7 @@ function runFirst(episode, eventRound) {
 	let doubleJMultiplier = round == "double" ? 2 : 1;
 	cluesClicked = 0;
 	categories.forEach((category) => {
+		category.classList.remove('no-clue');
 		if(category.classList.contains('col1')) {
 			category.children[0].textContent = ep[roundOffset].fields.category.toUpperCase();
 		}
@@ -36,6 +37,12 @@ function runFirst(episode, eventRound) {
 		}
 	});
 	clues.forEach((clue) => {
+		if(clue.id == "18") {
+			clue.classList.remove('category');
+		}
+		if(clue.id == "19") {
+			clue.classList.remove('clue-final');
+		}
 		let clicked = false;
 		clue.classList.remove("no-clue");
 		if(ep[parseInt(clue.id) - 1 + roundOffset].fields.clue_text == "") {
@@ -87,7 +94,6 @@ function runFirst(episode, eventRound) {
 						clueText.style.left = rect.left + "px";
 						clueText.style.width = (rect.right - rect.left) + "px";
 						clueText.style.height = (rect.bottom - rect.top) + "px";
-						console.log(clueText.style.height);
 						screenNode.appendChild(clueText);
 						let answer = document.createElement('p');
 						answer.textContent = ep[parseInt(clue.id) - 1 + roundOffset].fields.clue_text.toUpperCase()
@@ -104,11 +110,6 @@ function runFirst(episode, eventRound) {
 							if(!initialTransition) {
 								clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
 								initialTransition = true;
-								console.log("first");
-							}
-							else {
-								//clueText.style.transform = "translate(0px, 0px)";
-								console.log("other");
 							}
 						});
 						let responseText = document.createElement('div');
@@ -122,8 +123,6 @@ function runFirst(episode, eventRound) {
 						response.style.display = "table-cell";
 						responseText.appendChild(response);
 						let responseHeight = Math.max( responseText.clientHeight, responseText.offsetHeight, responseText.scrollHeight );
-						console.log(responseHeight);
-								//console.log(clueText.style.removeProperty("transform"));
 						clueText.addEventListener('click', () => {
 							let blackOverlay = document.createElement('div');
 							blackOverlay.style.backgroundColor = "black";
@@ -152,7 +151,6 @@ function runFirst(episode, eventRound) {
 							clickableScreen.style.opacity = 0;
 							screenNode.appendChild(clickableScreen);
 							clickableScreen.addEventListener("click", () => {
-								console.log("click click click");	
 								screenNode.removeChild(responseText);
 								screenNode.removeChild(clueText);
 								screenNode.removeChild(blackOverlay);
@@ -166,7 +164,6 @@ function runFirst(episode, eventRound) {
 									changeRound("final")
 								}
 							}
-							//screenNode.removeChild(clueText);
 						});
 					}
 				});
@@ -176,16 +173,127 @@ function runFirst(episode, eventRound) {
 }
 
 function playFinalRound(ep) {
-
+	console.log("final");
+	if(ep.length == 61) {
+		let categories = document.querySelectorAll('.category');
+		let clues = document.querySelectorAll('.clue');
+		let screenNode = document.querySelector('.entire-screen');
+		categories.forEach((category) => {
+			category.children[0].textContent = "";
+			category.classList.add("no-clue");
+		});
+		clues.forEach((clue) => {
+			if(clue.id == "18") {
+				//clue.classList.remove('clue');
+				clue.classList.add('category');
+				clue.children[0].textContent = ep[60].fields.category.toUpperCase();
+			}
+			else if(clue.id == "19") {
+				let clicked = false;
+				clue.classList.remove("no-clue");
+				clue.children[0].textContent = "Final Jeopardy!";
+				clue.classList.add('clue-final');
+				clue.addEventListener('click', () => {
+					if(clicked == false) {
+						clicked = true;
+						cluesClicked++;
+						clue.children[0].textContent = "";
+						let clueText = document.createElement('div');
+						clueText.setAttribute('class', 'answer-text');
+						var rect = clue.getBoundingClientRect();
+						clueText.style.top = rect.top + "px";
+						clueText.style.left = rect.left + "px";
+						clueText.style.width = (rect.right - rect.left) + "px";
+						clueText.style.height = (rect.bottom - rect.top) + "px";
+						screenNode.appendChild(clueText);
+						let answer = document.createElement('p');
+						answer.textContent = ep[60].fields.clue_text.toUpperCase()
+						answer.style.display = "table-cell";
+						clueText.appendChild(answer);
+						var windowWidth = Math.max( document.body.scrollWidth, document.body.offsetWidth, document.body.clientWidth, document.documentElement.clientWidth, document.documentElement.offsetWidth);
+						var windowHeight = Math.max( document.body.clientHeight, document.body.offsetHeight, document.body.scrollHeight, document.documentElement.clientHeight, document.documentElement.offsetHeight);
+						let initialTransition = false;
+						var horizShift = (windowWidth/2) - rect.left - ((rect.right - rect.left) / 2);
+						var vertShift = (windowHeight/2) - rect.top - ((rect.bottom - rect.top) / 2);
+						var horizStretch = windowWidth/(rect.right - rect.left);
+						var vertStretch = windowHeight/(rect.bottom - rect.top);
+						clueText.addEventListener('mouseover', () => {
+							if(!initialTransition) {
+								clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
+								initialTransition = true;
+							}
+						});
+						let responseText = document.createElement('div');
+						responseText.setAttribute('class', 'response-text');
+						responseText.setAttribute('id', 'response');
+						responseText.style.bottom = "0px";
+						responseText.style.maxWidth = (windowWidth * 0.92) + "px";
+						screenNode.appendChild(responseText);
+						let response = document.createElement('p');
+						response.textContent = ep[60].fields.correct_response.toUpperCase();
+						response.style.display = "table-cell";
+						responseText.appendChild(response);
+						let responseHeight = Math.max( responseText.clientHeight, responseText.offsetHeight, responseText.scrollHeight );
+						clueText.addEventListener('click', () => {
+							let blackOverlay = document.createElement('div');
+							blackOverlay.style.backgroundColor = "black";
+							blackOverlay.style.position = "absolute";
+							blackOverlay.style.top = "0px";
+							blackOverlay.style.left = "0px";
+							blackOverlay.style.height = windowHeight + "px";
+							blackOverlay.style.width = windowWidth + "px";
+							blackOverlay.style.zIndex = 1;
+							screenNode.appendChild(blackOverlay);
+							vertShift = vertShift - (responseHeight/2);
+							var stretchRatio = horizStretch / vertStretch;
+							vertStretch = (windowHeight - responseHeight)/(rect.bottom - rect.top);
+							horizStretch = stretchRatio * vertStretch;
+							clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
+							clueText.style.transition = "all 0.5s linear";
+							clueText.style.transitionDelay = "0s";
+							responseText.classList.toggle("fadein");
+							let clickableScreen = document.createElement('div');
+							clickableScreen.style.position = "absolute";
+							clickableScreen.style.top = "0px";
+							clickableScreen.style.left = "0px";
+							clickableScreen.style.height = windowHeight + "px";
+							clickableScreen.style.width = windowWidth + "px";
+							clickableScreen.style.zIndex = "3";
+							clickableScreen.style.opacity = 0;
+							screenNode.appendChild(clickableScreen);
+							clickableScreen.addEventListener("click", () => {
+								screenNode.removeChild(responseText);
+								screenNode.removeChild(clueText);
+								screenNode.removeChild(blackOverlay);
+								screenNode.removeChild(clickableScreen);
+							});
+						});
+					}
+				});
+			}
+			else {
+				clue.children[0].textContent = "";
+				clue.classList.add("no-clue");
+			}
+		});
+	}
 }
 
-function changeRound(newRound, ep) {
+function changeRound(newRound) {
 	round = newRound;
-	runFirst(ep, eventRound=newRound);
+	var menu = document.getElementById("menu");
+	if(newRound == "double") {
+		menu.selectedIndex = 1;
+		runFirst(ep, eventRound=newRound);
+	}
+	else if(newRound == "final") {
+		menu.selectedIndex = 2;
+		console.log(ep);
+		playFinalRound(ep);
+	}
 }
 
 function menuChange(indexLink) {
-	console.log(indexLink);
 	var menu = document.getElementById("menu");
 	if(menu.selectedIndex == 0) {
 		round = "jeopardy";
