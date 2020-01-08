@@ -10,7 +10,6 @@ The menu page allows the user to choose a season and episode to play through. On
 - Add Daily Double screen
 - Add Final Jeopardy image
 - Make home page look amazing
-- Prohibit clicking another clue once one has been clicked
 - Upload all available seasons and episodes
 - Fix issue with single quote and backslash in responses
 - Display available images

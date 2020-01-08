@@ -14,6 +14,7 @@ function runFirst(episode, eventRound) {
 	let roundOffset = round == "double" ? 30 : 0;
 	let moneyMultiplier = ep[0].fields.episode >= 3966 ? 2 : 1;
 	let doubleJMultiplier = round == "double" ? 2 : 1;
+	let clueInProgress = false;
 	cluesClicked = 0;
 	categories.forEach((category) => {
 		category.classList.remove('no-clue');
@@ -75,7 +76,8 @@ function runFirst(episode, eventRound) {
 					let b = doubleRoundClickedClues.push(parseInt(clue.id)-1);
 				}
 				clue.addEventListener('click', () => {
-					if(clicked == false && round == eventRound) {
+					if(clicked == false && round == eventRound && !clueInProgress) {
+						clueInProgress = true;
 						clicked = true;
 						cluesClicked++;
 						if(round == "jeopardy") {
@@ -155,6 +157,7 @@ function runFirst(episode, eventRound) {
 								screenNode.removeChild(clueText);
 								screenNode.removeChild(blackOverlay);
 								screenNode.removeChild(clickableScreen);
+								clueInProgress = false;
 							});
 							if(cluesClicked == 30) {
 								if(round == "jeopardy") {
