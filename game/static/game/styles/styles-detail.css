@@ -99,21 +99,40 @@ p {
     transition: all 0.8s linear;
     transition-delay: 0.4s;
     word-spacing: 0.12em;
+	position: absolute;
+	display: table;
+	text-shadow: 0.05em 0.05em black;
+	z-index: 3;
 }
 
 .zoom {
-    transform: scale(7) translate(60px, 30px);
 }
 
 .response-text {
 	color: white;
 	background-color: rgb(43, 31, 150);
 	font: Garamond serif;
-	font-size: 80%;
-	padding: 1em;
+	font-size: 560%;
+	padding: 0.5em;
 	text-align: center;
 	vertical-align: middle;
+	border: 3px solid black;
+	border-radius: 30px;
+	position: absolute;
+	display: table;
+	text-shadow: 0.05em 0.05em black;
+	left: 50%;
+	opacity: 0;
+	z-index: 0;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	transition: opacity 1s;
+	transition-timing-function: cubic-bezier(0,0,0,1);
+}
 
+.fadein {
+	opacity: 1;
+	z-index: 2;
 }
 
 @media all and (min-width: 1200px) {

@@ -11,7 +11,7 @@
   <body>
     <div class="entire-screen">
 			<nav>
-				<select id="menu" onchange="">
+				<select id="menu" onchange="menuChange({% url 'game:index' %})">
 					<option selected value="first">Jeopardy Round</option>
 					<option value="double">Double Jeopardy Round</option>
 					<option value="final">Final Jeopardy Round</option>
@@ -132,7 +132,7 @@
     <script type="application/json" src="db/data.json"></script>
 	<script src="{% static 'game/scripts/script-detail.js' %}"></script>
 	<script>
-		runFirst({{episode_json|safe}});
+		runFirst(episode={{episode_json|safe}}, eventRound="jeopardy");
 	</script>
   </body>
 </html>
