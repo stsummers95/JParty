@@ -173,7 +173,6 @@ function runFirst(episode, eventRound) {
 }
 
 function playFinalRound(ep) {
-	console.log("final");
 	if(ep.length == 61) {
 		let categories = document.querySelectorAll('.category');
 		let clues = document.querySelectorAll('.clue');
@@ -184,7 +183,6 @@ function playFinalRound(ep) {
 		});
 		clues.forEach((clue) => {
 			if(clue.id == "18") {
-				//clue.classList.remove('clue');
 				clue.classList.add('category');
 				clue.children[0].textContent = ep[60].fields.category.toUpperCase();
 			}
@@ -288,7 +286,6 @@ function changeRound(newRound) {
 	}
 	else if(newRound == "final") {
 		menu.selectedIndex = 2;
-		console.log(ep);
 		playFinalRound(ep);
 	}
 }
