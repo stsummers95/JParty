@@ -7,7 +7,6 @@ JParty is an interactive Jeopardy! site using clues, questions, and categories f
 The menu page allows the user to choose a season and episode to play through. Once an episode is selected, the game board will be shown. The game is ideal at full screen (press F11 or fn+F11 to enter and exit full screen mode). 
 
 ### Remaining features to implement
-- Add Final Jeopardy image
 - Make home page look amazing
 - Upload all available seasons and episodes
 - Fix issue with single quote and backslash in responses
@@ -16,6 +15,7 @@ The menu page allows the user to choose a season and episode to play through. On
 - Add label for "Audio" and "Video" Daily Doubles
 - Potentially, implement feature for choosing from full games - games without missing clues or missing images/videos/media
 - Potentially, add timer to Final Jeopardy
+- Potentially, add sound for Daily Double and Final Jeopardy timer, with option for sound on home page
 
 ## Disclaimer
 
