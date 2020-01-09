@@ -108,12 +108,42 @@ function runFirst(episode, eventRound) {
 						var vertShift = (windowHeight/2) - rect.top - ((rect.bottom - rect.top) / 2);
 						var horizStretch = windowWidth/(rect.right - rect.left);
 						var vertStretch = windowHeight/(rect.bottom - rect.top);
-						clueText.addEventListener('mouseover', () => {
-							if(!initialTransition) {
-								clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
-								initialTransition = true;
-							}
-						});
+						if(ep[parseInt(clue.id) - 1 + roundOffset].fields.daily_double) {
+							let ddScreen = document.createElement('div');
+							ddScreen.setAttribute('class', 'daily-double');
+							ddScreen.style.top = rect.top + "px";
+							ddScreen.style.left = rect.left + "px";
+							ddScreen.style.width = (rect.right - rect.left) + "px";
+							ddScreen.style.height = (rect.bottom - rect.top) + "px";
+							screenNode.appendChild(ddScreen);
+							let ddText = document.createElement('p');
+							ddText.textContent = "DAILY\r\n DOUBLE";
+							ddText.style.display = "table-cell";
+							ddScreen.appendChild(ddText);
+							ddScreen.addEventListener('mouseover', () => {
+								if(!initialTransition) {
+									console.log("DD");
+									//screenNode.style.perspective = "400px";
+									ddScreen.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ") rotateX(-360deg)";
+									initialTransition = true;
+									clueText.classList.add('daily-double-clue');
+									clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
+								}
+							});
+							ddScreen.addEventListener('click', () => {
+								ddScreen.classList.add('fadeout');
+								screenNode.removeChild(ddScreen);
+							});
+						}
+						else {
+							console.log("not DD");
+							clueText.addEventListener('mouseover', () => {
+								if(!initialTransition) {
+									clueText.style.transform = "translate(" + horizShift + "px, " + vertShift + "px) scale(" + horizStretch + ", " + vertStretch + ")";
+									initialTransition = true;
+								}
+							});
+						}
 						let responseText = document.createElement('div');
 						responseText.setAttribute('class', 'response-text');
 						responseText.setAttribute('id', 'response');

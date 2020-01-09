@@ -76,6 +76,12 @@ p {
     text-shadow: none;
 }
 
+.daily-double p {
+	white-space: pre-line;
+	transform: scale(1, 1.5);
+	text-shadow: 0.005em -0.015em 0.010em gold;
+}
+
 .clue-final p {
 	font-size: 2.4vw !important;
 	text-shadow: 3px 3px black;
@@ -133,6 +139,31 @@ p {
 	transform: translateX(-50%);
 	transition: opacity 1s;
 	transition-timing-function: cubic-bezier(0,0,0,1);
+}
+
+.daily-double {
+	color: rgb(23, 112, 255);
+	background-color: rgb(120, 0, 200);
+	background-image: linear-gradient(rgb(80, 0, 200), rgb(120, 0, 200), rgb(160, 0, 200), rgb(200, 0, 200), rgb(255, 200, 0), rgb(255, 200, 0), rgb(255, 200, 0));
+	font-family: "Verdana", sans-serif;
+	font-size: 170%;
+	font-weight: bold;
+	padding: 1em;
+	text-align: center;
+	vertical-align: middle;
+	transition: all 0.6s linear;
+	position: absolute;
+	display: table;
+	z-index: 5;
+}
+
+.daily-double-clue {
+	transition: all 0.1s linear;
+	transition-delay: 1s;
+}
+
+.fadeout {
+	opacity: 0;
 }
 
 .fadein {
