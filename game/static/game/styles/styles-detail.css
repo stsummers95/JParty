@@ -52,7 +52,6 @@ select {
     font-family: Anton;
     display: table;
     height: 100%;
-    padding: 0 7px;
 }
 
 .grid-container .category {
@@ -83,8 +82,17 @@ p {
 }
 
 .clue-final p {
-	font-size: 2.4vw !important;
+	color: gold;
+	white-space: pre-line;
+	font-size: 160% !important;
 	text-shadow: 3px 3px black;
+	background-image: linear-gradient(hsl(264, 100%, 39%), hsl(276, 100%, 39%), hsl(288, 100%, 39%), hsl(300, 100%, 39%), hsl(40, 100%, 65%), hsl(40, 100%, 65%), hsl(40, 100%, 65%));
+	width: 100%;
+}
+
+.clue-final p:hover {
+	background-image: linear-gradient(hsl(264, 100%, 69%), hsl(276, 100%, 69%), hsl(288, 100%, 69%), hsl(300, 100%, 69%), hsl(40, 100%, 85%), hsl(40, 100%, 85%), hsl(40, 100%, 85%));	
+	font-size: 170% !important;
 }
 
 .clue:hover {

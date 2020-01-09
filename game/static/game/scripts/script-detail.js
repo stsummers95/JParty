@@ -222,7 +222,7 @@ function playFinalRound(ep) {
 			else if(clue.id == "19") {
 				let clicked = false;
 				clue.classList.remove("no-clue");
-				clue.children[0].textContent = "Final Jeopardy!";
+				clue.children[0].textContent = "Final\r\n Jeopardy!";
 				clue.classList.add('clue-final');
 				clue.addEventListener('click', () => {
 					if(clicked == false) {
