@@ -16,6 +16,7 @@ function runFirst(episode, eventRound) {
 	let doubleJMultiplier = round == "double" ? 2 : 1;
 	let clueInProgress = false;
 	cluesClicked = 0;
+	sortEp();
 	categories.forEach((category) => {
 		category.classList.remove('no-clue');
 		if(category.classList.contains('col1')) {
@@ -321,6 +322,48 @@ function changeRound(newRound) {
 		menu.selectedIndex = 2;
 		playFinalRound(ep);
 	}
+}
+
+function sortEp() {
+	let epCopy = ep;
+	ep = []
+	let comparisons = 0;
+	for(let i = 0; i < epCopy.length; i++) {
+		console.log(epCopy[i].fields.clue_id);
+		if(ep.length == 0) {
+			ep.push(epCopy[i]);
+		}
+		else {
+			let itemAdded = false;
+			if(epCopy[i].fields.clue_id <= 30) {
+				for(let j = 0; j < ep.length; j++) {
+					comparisons = comparisons + 1;
+					if(epCopy[i].fields.clue_id < ep[j].fields.clue_id) {
+						ep.splice(j, 0, epCopy[i]);
+						itemAdded = true;
+						break;
+					}
+				}
+				if(!itemAdded) {
+					ep.push(epCopy[i]);
+				}
+			}
+			else {
+				for(let j = ep.length - 1; j >=0; j--) {
+					comparisons = comparisons + 1;
+					if(epCopy[i].fields.clue_id > ep[j].fields.clue_id) {
+						ep.splice(j + 1, 0, epCopy[i]);
+						itemAdded = true;
+						break;
+					}
+				}
+				if(!itemAdded) {
+					ep.splice(0, 0, epCopy[i]);
+				}
+			}
+		}
+	}
+	console.log(comparisons);
 }
 
 function menuChange(indexLink) {
