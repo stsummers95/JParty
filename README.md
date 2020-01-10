@@ -8,9 +8,9 @@ The menu page allows the user to choose a season and episode to play through. On
 
 ### Remaining features to implement
 - Make home page look amazing
-- Upload all available seasons and episodes
 - Fix issue with single quote and backslash in responses
-- Display available images
+- Display available images, video, audio
+- Delete text stating if a Clue Crew member presents the clue, perhaps label the clue differently to explain that it was presented by a Clue Crew member
 - For clues with images that are not available, color clues accordingly to notify user
 - Add label for "Audio" and "Video" Daily Doubles
 - Potentially, implement feature for choosing from full games - games without missing clues or missing images/videos/media

@@ -1,8 +1,4 @@
 episodeList = [['Select a season!']]
-
-season1 = ['A', 'B', 'C']
-season2 = ['D', 'E', 'F']
-season3 = ['G', 'H', 'I']
 seasonList = ['Select a season!']
 var listBeginner = ['Select an episode!']
 
