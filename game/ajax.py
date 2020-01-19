@@ -1,9 +1,12 @@
-import json, psycopg2
+import json, psycopg2, os
 from django.http import Http404, HttpResponse
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def getEpisodesFromDatabase(request):
     #if request.is_ajax():
-    conn = psycopg2.connect("host=localhost dbname=jclues user=jeopardyuser password=AlexTisgr8")
+    conn = psycopg2.connect("host=localhost dbname=" + os.environ.get('DB_NAME') + "  user=" + os.environ.get('DB_USER') + " password=" + os.environ.get('DB_PASSWORD'))
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT season FROM clues")
     episodeLists = []
